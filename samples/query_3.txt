@@ -1,0 +1,104 @@
+
+Querying for: 'efficient load balancing' in Collection: my_macbook_files_test
+Using embedding model: jinaai/jina-embeddings-v3 (Model size: 1024)
+
+Results of query without re-ranking (Top 10): 
+=============================================
+
+Result 1:
+Score: 0.4777508
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 48)
+##Section: 4.5 Future Direction: Flowlet switching ##Page: 7
+
+Text: while incurring negligible to no out-of-order packets. Load-aware path assignment: For very high interval, flowlet switching tends to be like ECMP where flows are assigned ports statically for the lifetime of the flow. Interestingly, we observed
+that even in those scenarios, flowlet switching exhibited superior load balancing as compared to ECMP simply because of its picking up initial port based on the port quality (load) rather than hash. So while the path doesn't change for the lifetime of the flow, flowlet mechanism makes better decision to pick the path based on its current port load. In workloads where we do not have long lived flows, we will still benefit from this mechanism.
+Status: We found during the initial testing that flowlet switching can achieve similar performance as TE with lower operational cost. Our future roll-out plans with flowlet switching will depend on the signals we get from early deployments. We will cover outcome of such roll-out along with more in-depth trade-offs in future work.
+---------------
+
+
+Result 2:
+Score: 0.4748997
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 101)
+##Section: REFERENCES ##Page: 13
+
+Text: - [35] Erico Vanini, Rong Pan, Mohammad Alizadeh, Parvin Taheri, and Tom Edsall. 2017. Let It Flow: Resilient Asymmetric Load Balancing with Flowlet Switching. In 14th USENIX Symposium on Networked Systems Design and Implementation (NSDI 17) . USENIX Association, Boston, MA, 407-420. https://www.usenix.org/ conference/nsdi17/technical-sessions/presentation/vanini
+- [36] Weiyang Wang, Manya Ghobadi, Kayvon Shakeri, Ying Zhang, and Naader Hasani. 2023. How to Build Low-cost Networks for Large Language Models (without Sacrificing Performance)? arXiv:2307.12169 [cs.NI]
+---------------
+
+
+Result 3:
+Score: 0.456079
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 11)
+##Section: 1 INTRODUCTION ##Page: 2
+
+Text: 1-to-1 low congestion. AllGather, GPU Msg (MB) = 1. AllGather, NIC Msg (KB) = 512. AllGather, Flow entropy per NIC = log ( 𝑀 ). AllGather, Topology need = Tolerate over-subscription. ReduceScatter, Model Dist. purpose = FSDP. ReduceScatter, Traffic pattern = Ring. ReduceScatter, Network congestion = 1-to-1 low congestion. ReduceScatter, GPU Msg (MB) = 1. ReduceScatter, NIC Msg (KB) = 512. ReduceScatter, Flow entropy per NIC = log ( 𝑀 ). ReduceScatter, Topology need = Tolerate over-subscription
+in our initial stages, we deployed a combination of centralized traffic engineering and an Enhanced ECMP scheme to achieve optimal load distribution for training workloads.
+---------------
+
+
+Result 4:
+Score: 0.4408177
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 32)
+##Section: 4 ROUTING ##Page: 5
+
+Text: The scaling of compute power and network topology discussed above led to the question of how to efficiently balance and route the massive training traffic. Specifically, the AI training workloads had several challenging characteristics: (a) Low entropy : Compared to traditional data center workloads, the number and the diversity of flows for AI workloads are much smaller and the flow patterns are usually repetitive and predictable. (b) Burstiness : On the time dimension, the flows usually exhibit the 'on and off' nature in the time granularity of milliseconds. (c) Elephant flows : For each burst, the intensity of each flow could reach up to the line rate of NICs.
+We describe below multiple stages of evolution of our routing design to handle these challenges.
+---------------
+
+
+Result 5:
+Score: 0.43119025
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 46)
+##Section: 4.5 Future Direction: Flowlet switching ##Page: 7
+
+Text: While TE and E-ECMP comprise our routing approach for different deployments, there are operational trade-offs with each as described earlier.
+Flowlet switching[35] is one of the alternative schemes to address issues seen with both of these routing schemes. This technique [35] relies on finding gaps in the flows. When a gap is found in the flow, the flowlet engine makes a decision to reassign the flow to a new ECMP member port based on the load. This is a hardware assisted scheme, supported by the first-hop switch (RTSW), which reacts to changes in the port load at microsecond granularity. In our testing, such a scheme has exhibited superior link load balancing and better performance in case of congestion and multiple-link failure scenarios. Adaptability of this scheme helps it scale with minimal QP scaling for 4 for all workloads. Not needing customized QP scaling on per workload basis mitigates E-ECMP's issues. Hardware support for the scheme helps mitigate the software complexity concerns from TE.
+---------------
+
+
+Result 6:
+Score: 0.39945138
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 33)
+##Section: 4.1 ECMP and Path Pinning ##Page: 5
+
+Text: 4.1.1 ECMP. We initially considered the widely adopted ECMP, which places flows randomly based on the hashes on the five-tuple: source and destination IP, source and destination UDP port, protocols. However and as expected, ECMP rendered poor performance for the training workload due to the low flow entropy.
+We used Max-Mean Ratio (MMR), the flow count of the most loaded link over the average flow count per link, to quantify ECMP imbalance since most flows are the same size within one collective. We observed an average MMR over 1.2 for 1,000 flows on 16 links simulation. In reality, the situation is much worse as shown in Table 2. This imperfect load balancing would result in high probability of collision of large elephant flows, and hence causing severe congestion and slowing down the network throughput and job performance.
+---------------
+
+
+Result 7:
+Score: 0.38977295
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 50)
+##Section: 5 TRANSPORT ##Page: 8
+
+Text: This section is a deep-dive into our transport design and solutions for challenges relating to network congestion listed in Section 2.4. Section 4 addressed solutions to persistent congestion due to inefficient load balancing. Even with perfect distribution of traffic, collective traffic patterns like AlltoAll can cause momentary buffer buildup and micro bursts as shown in Table 2. This phenomenon presents the need for flow control and congestion control for achieving predicable performance by avoiding traffic drops and offering predicable tail latency. We start by describing our initial attempts to leverage DCQCN and then how we pivoted away from DCQCN to manage congestion via receiver-driven admission control at the collective library layer.
+---------------
+
+
+Result 8:
+Score: 0.3878404
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 65)
+##Section: 6.1 Co-tuning Network and Collective ##Page: 10
+
+Text: Small messages: NCCL [25] accounts for optimal performance for small collective sizes by following 2 strategies: 1) Different logical topologies to implement the same collective, e.g., Tree vs Ring, 2) Different low-latency or high-bandwidth protocols, e.g., Simple, LL128, LL (low latency), to deal with memory barriers when crossing GPU memory to the PCIe / RDMA boundary or vice-versa. Each topology or protocol may be optimal for smaller or larger collective size. However, the tuning of when to use a particular logical topology or protocol is calculated by a static tuning model that assumes low fabric latency (both loaded and unloaded). This results in unfavorable trade-offs and poor performance. We explain the latency trade-offs of logical topology and protocols below.
+---------------
+
+
+Result 9:
+Score: 0.38613808
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 10)
+##Section: 1 INTRODUCTION ##Page: 2
+
+Text: AlltoAll(v), Model Dist. purpose = Embedding distribution. AlltoAll(v), Traffic pattern = full mesh with imbalanced traffic. AlltoAll(v), Network congestion = N-to-N with possible incast. AlltoAll(v), GPU Msg (MB) = 1. AlltoAll(v), NIC Msg (KB) = 128. AlltoAll(v), Flow entropy per NIC = log ( 𝑀 ∗ 𝑁 ). AlltoAll(v), Topology need = Full bisection bandwidth. AllReduce, Model Dist. purpose = DDP. AllReduce, Traffic pattern = Tree or Ring. AllReduce, Network congestion = 2-to-1 incast for Tree. AllReduce, GPU Msg (MB) = 4 (Tree) 1 (Ring). AllReduce, NIC Msg (KB) = 512. AllReduce, Flow entropy per NIC = log ( 𝑀 ). AllReduce, Topology need = Tolerate over-subscription. AllGather, Model Dist. purpose = FSDP. AllGather, Traffic pattern = Ring. AllGather, Network congestion =
+---------------
+
+
+Result 10:
+Score: 0.3760801
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 47)
+##Section: 4.5 Future Direction: Flowlet switching ##Page: 7
+
+Text: Out-of-order Packets: Flow reassignments can result in out-oforder packets mainly because we resort to path reassignment with active flows. Managing out-of-order packets is an important aspect of this technique and require tuning the flowlet interval. Theoretically this gap needs to be approximately half of the round trip time of the network. Doing so ensures that flow is reassigned to a new path only when previous packets in the same flow have at least reached destination before switching the path resulting in drastic reduction of out-of-order packets. As shown in Figure 11, out-of-order packets go down non-linearly as the interval increases. The out-of-order packets are below 1 packet/second in the 256512 𝜇 s flowlet interval range. On the flip side shrinking the flowlet interval leads to more aggressive load balancing. However, there is a diminishing return on performance from more aggressive load balancing. For example in 200G based experimental setup (Figure 11), insignificant difference in performance was found between 256 usec and 512 usec flowlet intervals for A2A collectives. We are able to tune the flowlet interval to achieve optimal load balancing and throughput
+---------------
+
+========================================

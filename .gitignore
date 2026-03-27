@@ -1,0 +1,15 @@
+# Include only the specific files for this project
+*
+
+# Allow these files
+!.gitignore
+!README.md
+!qd_embed_macbook_files.py
+!qd_query.py
+!qd_list_collections.py
+!qd_delete_collection.py
+!check_fastembed_support.py
+
+# Allow samples directory
+!samples/
+!samples/**

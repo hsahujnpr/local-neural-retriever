@@ -1,0 +1,106 @@
+
+Querying for: 'tackling data explosion' in Collection: my_macbook_files_test
+Using embedding model: jinaai/jina-embeddings-v3 (Model size: 1024)
+Using reranker model: jinaai/jina-colbert-v2 (Model size: 128)
+
+Results of query after re-ranking (Top 10):
+===========================================
+
+Result 1:
+#Document: ./content/public/HPE Primera Data Reduction technical white paper-a50000209enw.pdf (Chunk: 73)
+##Section: HPE PRIMERA DATA REDUCTION TECHNOLOGIES ##Page: 4
+
+Text: Data is being generated at a rate, which exceeds storage capacity growth; therefore, the storage of data has become increasingly challenging. Also, there is an industry-wide transition of primary storage to solid-state drives (SSDs), which has a higher per-byte cost compared to hard disk drives (HDDs). For these reasons, price capacity or cost per byte, in addition to price performance, is emerging as a critical factor for enterprise storage. With HPE Primera Data Reduction, HPE Primera storage sets a new standard for total system efficiency that not only reduces the cost of flash but extends flash media endurance and offers the lowest TCO of any all-flash array.
+HPE Primera Data Reduction technologies including Compression, Deduplication, Thin Provisioning, Thin Conversion, Thin Persistence, and Thin Copy Reclamation achieve advanced data reduction through leveraging built-in hardware capabilities and HPE Primera Express Indexing technology.
+---------------
+
+
+Result 2:
+#Document: ./content/public/HPE Primera Data Reduction technical white paper-a50000209enw.pdf (Chunk: 87)
+##Section: Data reduction ##Page: 6
+
+Text: Data reduction volumes combine deduplication and compression techniques and are ideal for data that has a high level of redundant or compressible nonredundant data. Data sets that are good candidates for data reduction volumes include:
+- Virtual machine (VM) images-The OS binaries from multiple VMs can be reduced to a single copy by deduplication and the application data within the VMs can benefit from compression.
+- Virtual desktop infrastructure (VDI)-Client virtualization environments with both hosted persistent and nonpersistent desktops can achieve excellent data reduction ratios.
+- Databases-Most databases do not contain redundant data blocks but do have redundant data within blocks so they can benefit from compression.
+- Home directory and file shares-Storage deduplication and compression can offer significant space savings.
+Data with a low level of redundancy should not be stored on data reduction volumes. Data sets that are not good candidates include:
+- Compressed data-Compression creates a stream of unique data that will not benefit from storage data reduction. The most common types of compressed data are video and image files.
+- Encrypted data-The use of host or SAN encryption will also result in a stream of unique data that will not benefit from storage data reduction.
+---------------
+
+
+Result 3:
+#Document: ./content/public/HPE Primera Data Reduction technical white paper-a50000209enw.pdf (Chunk: 80)
+##Section: Deduplication ##Page: 5
+
+Text: Deduplication works by looking inside data streams for duplicate blocks of information. It has become standard with disk-based backup due to a high degree of data redundancy and less emphasis on performance. Backup and archive workloads have been an ideal target for deduplication technologies. Traditional primary storage workloads have lower data redundancy and hence lower deduplication ratios, and therefore deduplication of primary storage has not been seen as beneficial. However, the landscape around primary storage deduplication is changing as the widespread deployment of server virtualization is driving the demand for primary storage deduplication.
+---------------
+
+
+Result 4:
+#Document: ./content/public/HPE Primera Data Reduction technical white paper-a50000209enw.pdf (Chunk: 74)
+##Section: HPE PRIMERA DATA REDUCTION TECHNOLOGIES ##Page: 4
+
+Text: While HPE Primera Data Reduction is extremely easy to deploy and use, a certain amount of planning is advantageous to help maximize its benefits. This paper documents best practices for data reduction on HPE Primera storage and is intended for administrators looking to get the most out of their HPE Primera deployment. Also, it describes other HPE Primera Thin Technologies that you can use in conjunction with HPE Primera Data Reduction to help maximize its effectiveness.
+Like all data reduction technologies, HPE Primera Data Reduction is designed to reduce the cost of flash, making it more affordable. However, some workloads have compression at the application layer-examples of this would be compressed video and databases that apply compression before the data is written. In these scenarios, data reduction in the storage system will likely provide no additional savings as the efficiencies have already been made. When this is the case, it can be beneficial to not use data reduction at the array level on these volumes to free up resources to be used when compressing other workloads.
+---------------
+
+
+Result 5:
+#Document: ./content/public/HPE Primera Data Reduction technical white paper-a50000209enw.pdf (Chunk: 78)
+##Section: Compression ##Page: 4
+
+Text: HPE Primera systems use 16 KiB physical pages to store data. When compression is used, HPE Primera Data Packing allows multiple compressed pages (up to eight) to be stored in a single 16 KiB physical page. This data packing technique is part of the inline process that not only optimizes physical space but also creates larger, more media efficient, write sizes than other approaches, which improves both performance and media endurance. If an overwrite occurs, the system will refit the new compressed page in place if there is available space, thus reducing the amount of system garbage collection that is needed, but if the new data will not fit into the existing page it will be queued
+for packing with other new writes. HPE Primera Express Indexing technology, common to all HPE Primera thin volume types, is used to track the data in a compressed volume.
+HPE Primera compression also features Express Scan, a technology designed to identify incompressible streams of data and store them in their native format instead of wasting CPU cycles attempting to compress incompressible data. This greatly improves the performance of the system, adding a new dimension to efficiency.
+---------------
+
+
+Result 6:
+#Document: ./content/public/HPE Primera Data Reduction technical white paper-a50000209enw.pdf (Chunk: 79)
+##Section: Compression ##Page: 5
+
+Text: Compression compliments HPE Primera Zero Detect and deduplication to further reduce the amount of flash required to store a given amount of data. The combination of these three technologies is key to reducing the effective cost of flash below that of spinning disk and therefore making flash affordable for mainstream applications.
+---------------
+
+
+Result 7:
+#Document: ./content/public/HPE Primera Data Reduction technical white paper-a50000209enw.pdf (Chunk: 144)
+##Section: Usage reporting and trend analysis ##Page: 16
+
+Text: -----------Efficiency-----------Time HrsAgo  RawFree   LDFree OPFree RawFree  LDFree    Base   Snp    Free   Total Compact Dedup Compress DataReduce Overprov Jul 18 16:13:25      0 10321920  7741440      -       -       - 2315776  7680   11264 2334720    1.65  1.23     1.26       1.45     0.13 Jul 18 03:37:01     12 11018240  8263680      -   55234   41425 2315776  7680  576512 2899968    1.65  1.23     1.26       1.45      0.0 Jul 17 03:37:01     36 11362304  8521728      -   14336   10752 2315776  7680  576512 2899968    1.65  1.23     1.26       1.45      0.0 Jul 16 03:37:01     60 11362304  8521728      -       0       0 2315776  7680  576512 2899968    1.65  1.23     1.26
+---------------
+
+
+Result 8:
+#Document: ./content/public/HPE Primera Data Reduction technical white paper-a50000209enw.pdf (Chunk: 128)
+##Section: MANAGING OVERPROVISIONING ##Page: 14
+
+Text: Overprovisioning is the provisioning of virtual capacity to hosts in excess of the amount of usable storage in the system. Thin provisioning allows volume capacity unused by the host to not consume disk resources. Therefore, to be able to utilize all the system capacity, it is necessary to provision more storage than physically available. The use of data reduction further decreases the storage consumption, which increases the necessity for overprovisioning.
+Thus, it is essential to monitor the amount of overprovisioning as well as the actual capacity utilization to avoid a situation where the system runs out of space. HPE Primera systems can show the amount of overprovisioning as a ratio at the CPG, virtual domain, or system level.
+The overprovisioning ratio is calculated as:
+- Overprovisioning ratio = virtual size/(allocated space + free space)
+The virtual size is the sum of the effective virtual size of the volumes and snapshots. The effective virtual size depends on the volume type and is calculated as follows:
+- Thin provisioned VVs will use virtual size.
+- Data reduction VVs will use virtual size/data reduction ratio.
+To account for CPGs with different RAID set sizes all sizes are converted to raw sizes.
+---------------
+
+
+Result 9:
+#Document: ./content/public/HPE Primera Data Reduction technical white paper-a50000209enw.pdf (Chunk: 124)
+##Section: System ##Page: 13
+
+Text: Initialized, 1 = . Initialized, 2 = . Initialized, 3 = 10324992. Uninitialized, 1 = . Uninitialized, 2 = . Uninitialized, 3 = 0. Unavailable, 1 = . Unavailable, 2 = . Unavailable, 3 = 0. Failed, 1 = . Failed, 2 = . Failed, 3 = 0. ------------------ Efficiency ------------------, 1 = ------------------ Efficiency ------------------. ------------------ Efficiency ------------------, 2 = ------------------ Efficiency ------------------. ------------------ Efficiency
+---------------
+
+
+Result 10:
+#Document: ./content/public/HPE Primera Data Reduction technical white paper-a50000209enw.pdf (Chunk: 37)
+##Section: CONTENTS ##Page: 2
+
+Text: overprovisioning...........................................................................................................................................................................................................................................................
+---------------
+
+========================================

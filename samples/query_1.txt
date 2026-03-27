@@ -1,0 +1,95 @@
+
+Querying for: 'flagship ethernet switch for AI inferencing' in Collection: my_macbook_files_test
+Using embedding model: jinaai/jina-embeddings-v3 (Model size: 1024)
+Using reranker model: jinaai/jina-colbert-v2 (Model size: 128)
+
+Results of query after re-ranking (Top 10):
+===========================================
+
+Result 1:
+#Document: ./content/public/HPE-Juniper-press-release.pdf (Chunk: 8)
+##Section: HPE expands networks for AI portfolio with first OEM switch to leverage Broadcom Tomahawk 6 silicon ##Page: 4
+
+Text: - The HPE Juniper Networking QFX5250 switch, which connects GPUs within data centers with the world's highest performance Ultra Ethernet Transport-ready switch. Built on Broadcom Tomahawk 6 silicon, with 102.4Tbps bandwidth, the QFX5250 combines HPE Juniper Networking's Junos innovation, HPE's liquid cooling leadership, and AIOps intelligence to deliver performance, power-efficiency, and simplified operations for next-generation AI infrastructure.
+- The HPE Juniper Networking MX301 multiservice edge router brings AI inferencing closer to the source of data generation, and addresses the need for highperformance edge routing. This compact 1RU router delivers 1.6 Tbps performance and 400G connectivity across inference, multiservice, metro, mobile backhaul, and enterprise routing environments.
+---------------
+
+
+Result 2:
+#Document: ./content/public/HPE-Juniper-press-release.pdf (Chunk: 10)
+##Section: HPE announces extensions of partnerships with NVIDIA and AMD with new networking innovations ##Page: 4
+
+Text: - AMD 'Helios' AI rack-scale architecture, featuring industry-first scale-up Ethernet networking. The solution is a single turnkey rack capable of a trillion parameter AI training and high-volume inferencing, delivering 260 TB/s of scale-up bandwidth and 2.9 exaflops of FP4 performance. The included, purpose-built HPE Juniper Networking scale-up switch, developed in collaboration with Broadcom, and software are the first in the industry to supercharge AI training and inference performance using standards-based Ethernet.
+---------------
+
+
+Result 3:
+#Document: ./content/public/HPE-Juniper-press-release.pdf (Chunk: 7)
+##Section: HPE expands networks for AI portfolio with first OEM switch to leverage Broadcom Tomahawk 6 silicon ##Page: 3
+
+Text: High-performance networking is critical for running AI workloads, with computing for AI inferencing moving to the edge. This shift is driven by latency, privacy, and economics, and creates a need for high performing switches and routers. To address this growing segment of performance-hungry, accelerated compute, HPE is introducing:
+---------------
+
+
+Result 4:
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 29)
+##Section: 3.3 Evolution ##Page: 4
+
+Text: Our BE networks have undergone several transformations. Initially, our GPU clusters used a simple star topology with a few AI Racks connected to a central Ethernet switch. running the non-routable RoCEv1 protocol. This setup had clear limitations in GPU scale and switch redundancy. Therefore, we swiftly transitioned to a fabricbased architecture for extended scalability and higher availability.
+Figure 6: Backend Network Topology
+AI Zone We designed a two-stage Clos topology for AI racks, known as an AI Zone , as shown in Figure 6. The Rack Training Switch (RTSW), serving as the leaf switch, offers scale-up connectivity for GPUs within the rack using copper-based DAC cables. The spine tier, composed of modular Cluster Training Switches (CTSW), provides scale-out connectivity among all racks in the cluster. The CTSW has deep buffers statically divided over the ports in the chassis. The RTSWs connect to CTSWs via single-mode fiber and 400G pluggable transceivers.
+---------------
+
+
+Result 5:
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 67)
+##Section: 6.1 Co-tuning Network and Collective ##Page: 11
+
+Text: Other enhancements included tuning NIC PCIe credits and relaxed ordering; network-topology-aware rank assignment; and eliminating causes for zero-byte messages sent by the NIC that are not supported by Ethernet switches but are supported by InfiniBand. All of these changes helped ensure our RoCE fabric provides optimal AI Training performance, in spite of distinct artifacts such as high fabric RTT.
+---------------
+
+
+Result 6:
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 1)
+##Section: ABSTRACT ##Page: 1
+
+Text: The rapid growth in both computational density and scale in AI models in recent years motivates the construction of an efficient and reliable dedicated network infrastructure. This paper presents the design, implementation, and operation of Meta's Remote Direct Memory Access over Converged Ethernet (RoCE) networks for distributed AI training.
+Our design principles involve a deep understanding of the workloads, and we translated these insights into the design of various network components: Network Topology - To support the rapid evolution of generations of AI hardware platforms, we separated GPU-based training into its own 'backend' network. Routing - Training workloads inherently impose load imbalance and burstiness, so we deployed several iterations of routing schemes to achieve near-optimal traffic distribution. Transport - We outline how we initially attempted to use DCQCN for congestion management but then pivoted away from DCQCN to instead leverage the collective library itself to manage congestion. Operations - We share our experience operating large-scale AI networks, including toolings we developed and troubleshooting examples.
+---------------
+
+
+Result 7:
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 30)
+##Section: 3.3 Evolution ##Page: 5
+
+Text: DC-Scale and topology aware scheduling : The AI zones are designed to support a large number of interconnected GPUs in a non-blocking manner. However, emerging AI advancements, such as LLMs, demand a GPU scale larger than what a single AI Zone provides. To accommodate this, we designed an Aggregator Training Switch (ATSW) layer that connects the CTSWs in a data center building, expanding the RoCE domain beyond a single AI Zone. Note, the cross-AI zone connectivity is oversubscribed by design, with network traffic balanced using ECMP. To mitigate the performance bottleneck for cross-AI zone traffic, we enhanced the training job scheduler to find a 'minimum cut' when dividing the training nodes into different AI zones, reducing the cross-AI zone traffic and thus collective completion time. The scheduler does this by learning the position of GPU servers in the logical topology to recommend a rank assignment.
+---------------
+
+
+Result 8:
+#Document: ./content/public/sigcomm24-final246-acmpaginated.pdf (Chunk: 60)
+##Section: 5.2 Congestion Control ##Page: 9
+
+Text: 5.2.3 Absorbing In-Network Congestion. Our AI zone is built on a 2-stage Clos architecture (Section 3.2). While we used switches with shared and shallow buffer architecture for our RTSWs, we used CTSWs with deep buffers. We leveraged these large buffers by statically carving them per port on the ingress. This large perport buffer helped absorb any ephemeral congestion and ensured a port facing back pressure to reduce HoL blocking across ports. Given the high radix of our spine switches, we considered this nonblocking architecture an additional safety layer towards minimizing congestion.
+Figure 15: Network/Collective Co-Tuning performance
+---------------
+
+
+Result 9:
+#Document: ./content/public/HPE-Juniper-press-release.pdf (Chunk: 3)
+##Section: In this article ##Page: 2
+
+Text: This expansion includes new AIOps capabilities and common hardware that deliver a consistent, self-driving experience across both and operations platforms. Coupled with updates to and new HPE Juniper Networking switching and routing introductions, HPE expands the role of the network as the critical foundation enabling AI and cloud performance, while simplifying IT operations across hybrid environments using agentic AI compatible with . HPE Aruba Networking Central HPE Juniper Networking Mist HPE OpsRamp Software GreenLake Intelligence
+By delivering autonomous, high-performing networks, HPE is poised to disrupt the networking industry with future-ready solutions that redefine user experiences and provide robust, secure connectivity across all environments.
+---------------
+
+
+Result 10:
+#Document: ./content/public/HPE-Juniper-press-release.pdf (Chunk: 9)
+##Section: HPE announces extensions of partnerships with NVIDIA and AMD with new networking innovations ##Page: 4
+
+Text: Also prior to HPE Discover Barcelona 2025, HPE unveiled new high-performance networking solutions with NVIDIA and AMD to accelerate AI deployments, including:
+- HPE's solutions for AI factories have been extended to include HPE Juniper Networking edge on-ramp and long haul data center interconnect (DCI). This extension leverages the HPE Juniper Networks MX and PTX high-speed routing platforms to enable high-scale, secure and low latency connections from users, devices, and agents to AI factories and connections between clusters deployed across longer distances or across multiple clouds. These new capabilities complement HPE's AI factory networking solutions, including the and data processing units (DPUs). Together they provide customers with improved workload experiences across various production scenarios. NVIDIA Spectrum-X Ethernet networking platform NVIDIA BlueField-3
+---------------
+
+========================================
