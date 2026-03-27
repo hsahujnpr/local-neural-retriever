@@ -10,6 +10,7 @@
 !qd_delete_collection.py
 !check_fastembed_support.py
 
-# Allow samples directory
+# Allow samples directory (text files only, no PDFs)
 !samples/
-!samples/**
+!samples/*.txt
+samples/*.pdf
