@@ -1,8 +1,8 @@
-# Semantic Search with Qdrant & FastEmbed
+# local-neural-retriever: Semantic Search with Qdrant & FastEmbed
 
 A semantic search system built on **Qdrant** vector database and **FastEmbed** embedding models. Supports ingesting multi-format documents (PDF, DOCX, PPTX, XLSX, Markdown), chunking them intelligently, generating embeddings, and performing semantic search with optional **ColBERT v2 reranking**.
 
-It is a self-contained, lightweight system intended to be primarily used for easily searching on local laptop/desktop content, where privacy matters. It inherits the low-footprint, Rust-memory-safe attributes of Qdrant vector DB which can be run locally. Client scripts connect on HTTP interface on TCP/6333 for ingsting content and querying for search text.
+It is a self-contained, lightweight system primarily intended to be used for easily searching on local laptop/desktop content, where privacy matters. It inherits the low-footprint, Rust-memory-safe attributes of Qdrant vector DB which can be run local machin. Client scripts connect on HTTP interface on TCP/6333 for ingsting content and querying for search text.
 
 It can also be used by running Qdrant instance remotely, where larger storage is needed for ingesting larger amount of data.
 
@@ -43,15 +43,16 @@ Qdrant Upsert (batch)                   Page │ Text
 | Role | Model | Details |
 |------|-------|---------|
 | **Embedding** | `jinaai/jina-embeddings-v3` | Primary model, max 2048 tokens |
-| **Embedding** | `BAAI/bge-large-en-v1.5` | Alternative model |
-| **Reranking** | `jinaai/jina-colbert-v2` | Late interaction ColBERT model, MaxSim scoring |
+| **Embedding** | `BAAI/bge-large-en-v1.5`    | Alternative model |
+| **Reranking** | `jinaai/jina-colbert-v2`    | Late interaction ColBERT model, MaxSim scoring |
 
 ## Usage
 
 ### Prerequisites
 
 - Python 3.10+
-- Qdrant running locally on `localhost:6333` 
+- Qdrant running locally on `localhost:6333`
+  (Can be downloaded from https://qdrant.tech/documentation/operations/installation/)
 
 ### Install Dependencies
 
@@ -95,11 +96,9 @@ python qd_delete_collection.py <collection-name>
 | Qdrant host | `localhost:6333` |
 | Point IDs | UUID v5 (deterministic, based on content) |
 
-## Data Sources
+## Samples
 
-- **`content/`** — Technical whitepapers and documents (PDF, DOCX, PPTX, XLSX)
-- **`blogs/`** — Markdown essays
-- **`testset/`** — Sample queries for testing search quality
+- **`samples/`** — Sample queries output
 
 ## Key Features
 
@@ -107,4 +106,4 @@ python qd_delete_collection.py <collection-name>
 - **Intelligent chunking** — HybridChunker preserves document structure and section hierarchy
 - **Rich metadata** — Document name, section headings, page numbers, and chunk indices stored as payloads
 - **Two-stage retrieval** — Dense vector search followed by optional ColBERT v2 reranking for higher precision
-- **Local & Cloud** — Works with local Qdrant instances or Qdrant Cloud
+- **Local & Cloud** — Works with local Qdrant instances; can be extended to use Qdrant Cloud
