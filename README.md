@@ -2,7 +2,7 @@
 
 A semantic search system built on **Qdrant** vector database and **FastEmbed** embedding models. Supports ingesting multi-format documents (PDF, DOCX, PPTX, XLSX, Markdown), chunking them intelligently, generating embeddings, and performing semantic search with optional **ColBERT v2 reranking**.
 
-It is a self-contained, lightweight system primarily intended to be used for easily searching on local laptop/desktop content, where privacy matters. It inherits the low-footprint, Rust-memory-safe attributes of Qdrant vector DB which can be run local machin. Client scripts connect on HTTP interface on TCP/6333 for ingsting content and querying for search text.
+It is a self-contained, lightweight system primarily intended to be used for easily searching on local laptop/desktop content, where privacy matters. It inherits the low-footprint, Rust-memory-safe attributes of Qdrant vector DB which can be run local machine. Client scripts connect on HTTP interface on TCP/6333 for ingesting content and querying for search text.
 
 It can also be used by running Qdrant instance remotely, where larger storage is needed for ingesting larger amount of data.
 
