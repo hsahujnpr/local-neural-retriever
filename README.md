@@ -63,7 +63,7 @@ pip install qdrant-client fastembed docling numpy
 ### Embed Documents
 
 ```bash
-# Embed files listed in a text file (one path per line)
+# Embed files listed in a text file 'file-list.txt' (one path per line)
 python qd_embed_macbook_files.py <collection-name> <file-list.txt> 
 
 ### Query
