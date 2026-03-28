@@ -50,7 +50,7 @@ Qdrant Upsert (batch)                   Page │ Text
 
 ### Prerequisites
 
-- Python 3.10+
+- Python 3.12+
 - Qdrant running locally on `localhost:6333`
   (Can be downloaded from https://qdrant.tech/documentation/operations/installation/)
 
