@@ -2,7 +2,7 @@
 
 A semantic search system built on **Qdrant** vector database and **FastEmbed** embedding models. Supports ingesting multi-format documents (PDF, DOCX, PPTX, XLSX, Markdown), chunking them intelligently, generating embeddings, and performing semantic search with optional **ColBERT v2 reranking**.
 
-It is a self-contained, lightweight system primarily intended to be used for easily searching on local laptop/desktop content, where privacy matters. It inherits the low-footprint, Rust-memory-safe attributes of Qdrant vector DB which can be run local machine. Client scripts connect on HTTP interface on TCP/6333 for ingesting content and querying for search text.
+It is a self-contained, lightweight system primarily intended to be used for easily searching on local laptop/desktop content, where it is not desirable to use a cloud based system. Qdrant vector DB inherits efficient, low-footprint, memory-safe attributes of Rust which can be run on local machine. Client scripts use fastembed librabry, connect on HTTP interface on TCP/6333 for ingesting content and querying for search text.
 
 It can also be used by running Qdrant instance remotely, where larger storage is needed for ingesting larger amount of data.
 
@@ -11,7 +11,7 @@ It can also be used by running Qdrant instance remotely, where larger storage is
 ## Architecture
 
 ```
-DATA INGESTION                          SEMANTIC SEARCH
+**DATA INGESTION**                       **SEMANTIC SEARCH**
 
 Source Files                            Natural Language Query
 (PDF, DOCX, PPTX, XLSX, MD)                    │
@@ -98,8 +98,9 @@ python qd_delete_collection.py <collection-name>
 
 ## Samples
 
-- **`samples/`** — Sample queries output
-
+- **`samples/file_list.txt`** - Sample file_list containing files to embed
+- **`samples/`query_*.txt** — Sample query outputs
+  
 ## Key Features
 
 - **Multi-format ingestion** — PDF, DOCX, PPTX, XLSX, and Markdown via Docling
@@ -107,3 +108,6 @@ python qd_delete_collection.py <collection-name>
 - **Rich metadata** — Document name, section headings, page numbers, and chunk indices stored as payloads
 - **Two-stage retrieval** — Dense vector search followed by optional ColBERT v2 reranking for higher precision
 - **Local & Cloud** — Works with local Qdrant instances; can be extended to use Qdrant Cloud
+
+## Further work
+The search does not work well for proprietary technical acronyms. When such acronyms are present, Qdrant's **hybrid search** (a combination of semantic search and keyword serach) needs to be used.
