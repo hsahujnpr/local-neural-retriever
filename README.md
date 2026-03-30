@@ -70,10 +70,10 @@ python qd_embed_macbook_files.py <collection-name> <file-list.txt>
 
 ```bash
 # Semantic search with ColBERT v2 reranking (default)
-python qd_query.py <collection-name> "your search query"
+python -O qd_query.py <collection-name> "your search query"
 
 # Semantic search (without reranking)
-python qd_query.py <collection-name> "your search query" norerank
+python -O qd_query.py <collection-name> "your search query" norerank
 ```
 
 ### Manage Collections
