@@ -17,6 +17,12 @@ if len(sys.argv) < 3:
     print("Usage: qd_embed_macbook_files.py <collection_name> <file_paths>")
     exit()
 
+def get_page_number(chunk):
+    # Check if doc_items exist and if the first item has provenance
+    if chunk.meta.doc_items and hasattr(chunk.meta.doc_items[0], 'prov') and chunk.meta.doc_items[0].prov:
+        return chunk.meta.doc_items[0].prov[0].page_no
+    return "NA"
+
 def embed_and_populate():
     with open(args.file_paths, "r", encoding="utf-8") as f:
         file_list = [line.strip() for line in f if line.strip()]
@@ -64,7 +70,7 @@ def embed_and_populate():
 
                 # Chunk the file content and contextualize it using Docling's Chunker 
                 text_to_embed = chunker.contextualize(chunk)
-                page_number   = chunk.meta.doc_items[0].prov[0].page_no if chunk.meta.doc_items else "NA"
+                page_number   = get_page_number(chunk)
 
                 # Prefix the filename to the text to provide more context to the model. 
                 # Strip the filename of any path and extension.
