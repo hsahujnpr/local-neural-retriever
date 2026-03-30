@@ -1,0 +1,16 @@
+# Ignore everything by default
+*
+
+# Track these files
+!.gitignore
+!LICENSE
+!README.md
+!check_fastembed_support.py
+!qd_delete_collection.py
+!qd_embed_macbook_files.py
+!qd_list_collections.py
+!qd_query.py
+
+# Track samples directory (text files only)
+!samples/
+!samples/*.txt
