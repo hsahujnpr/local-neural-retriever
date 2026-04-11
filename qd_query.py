@@ -41,22 +41,6 @@ def rerank_hits(query_text, top_hits, doc_names, sections, page_numbers, chunk_n
         print(f"\nDebug - Query embedding shape: {query_embedding[0].shape}")
         print(f"Debug - First hit embedding shape: {hits_embedding[0].shape}")
 
-    def calculate_maxsim(query_emb, doc_emb):
-        # Calculate the maxsim score between query and document embeddings
-        # query_emb and doc_emb are lists of multi-vector embeddings
-        maxsim_score = 0.0
-        for q_emb in query_emb:  # Iterate over each query embedding
-            for d_emb in doc_emb:  # Iterate over each document embedding
-                score = 0.0
-                for q_vec in q_emb:  # Each query token vector
-                    max_sim = -float('inf')
-                    for d_vec in d_emb:  # Each document token vector
-                        sim = np.dot(q_vec, d_vec) / (np.linalg.norm(q_vec) * np.linalg.norm(d_vec))
-                        max_sim = max(max_sim, sim)
-                    score += max_sim
-                maxsim_score = max(maxsim_score, score)
-        return maxsim_score
-
     #Calculate maxsim scores for each hit and print them
     start_time = time.time()
     reranked_scores = [calculate_maxsim(query_embedding, [hit_emb]) for hit_emb in hits_embedding]
