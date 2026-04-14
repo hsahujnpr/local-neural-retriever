@@ -1,6 +1,6 @@
 # local-neural-retriever: Semantic Search with Qdrant & FastEmbed
 
-A semantic search system built on **Qdrant** vector database and **FastEmbed** embedding models. Supports ingesting multi-format documents (PDF, DOCX, PPTX, XLSX, Markdown), chunking them intelligently, generating embeddings, and performing semantic search with optional **ColBERT v2 reranking**.
+A semantic search system built on **Qdrant** vector database and **FastEmbed** library. Supports ingesting multi-format documents (PDF, DOCX, PPTX, XLSX, Markdown), chunking them intelligently, generating embeddings using **jina-v3** embedding model, and performing semantic search, with optional **ColBERT v2 reranking**.
 
 It is a self-contained, lightweight system primarily intended to be used for easily searching on local laptop/desktop content, where it is not desirable to use a cloud based system. Qdrant vector DB inherits efficient, low-footprint, memory-safety attributes of Rust programming language and can be run on local machine. Client scripts use fastembed librabry, connect on HTTP interface on TCP/6333 for ingesting content and querying for search text.
 
