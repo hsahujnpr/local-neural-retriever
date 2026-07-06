@@ -1,6 +1,6 @@
 # local-neural-retriever: Semantic Search with Qdrant & FastEmbed
 
-A semantic search system built on **Qdrant** vector database and **FastEmbed** library. Supports ingesting multi-format documents (PDF, DOCX, PPTX, XLSX, Markdown), chunking them intelligently, generating embeddings using **jina-v3** embedding model, and performing semantic search, with optional **ColBERT v2 reranking**.
+A semantic search system built on **Qdrant** vector database and **FastEmbed** embedding models. Supports ingesting multi-format documents (PDF, DOCX, PPTX, XLSX, Markdown), chunking them intelligently, generating embeddings, and performing semantic search with optional **ColBERT v2 reranking**.
 
 It is a self-contained, lightweight system primarily intended to be used for easily searching on local laptop/desktop content, where it is not desirable to use a cloud based system. Qdrant vector DB inherits efficient, low-footprint, memory-safety attributes of Rust programming language and can be run on local machine. Client scripts use fastembed librabry, connect on HTTP interface on TCP/6333 for ingesting content and querying for search text.
 
@@ -69,11 +69,15 @@ python qd_embed_macbook_files.py <collection-name> <file-list.txt>
 ### Query
 
 ```bash
-# Semantic search with ColBERT v2 reranking (default)
+# Semantic search with ColBERT v2 reranking (default, top 10)
 python -O qd_query.py <collection-name> "your search query"
 
 # Semantic search (without reranking)
 python -O qd_query.py <collection-name> "your search query" norerank
+
+# Show top N results (default: 10)
+python -O qd_query.py <collection-name> "your search query" 5
+python -O qd_query.py <collection-name> "your search query" norerank 5
 ```
 
 ### Manage Collections
@@ -92,7 +96,7 @@ python qd_delete_collection.py <collection-name>
 |-----------|---------|
 | Distance metric | Cosine |
 | Search candidates | 25 |
-| Displayed results | 10 |
+| Displayed results (`top_n`) | 10 |
 | Qdrant host | `localhost:6333` |
 | Point IDs | UUID v5 (deterministic, based on content) |
 
@@ -107,6 +111,7 @@ python qd_delete_collection.py <collection-name>
 - **Intelligent chunking** — HybridChunker preserves document structure and section hierarchy
 - **Rich metadata** — Document name, section headings, page numbers, and chunk indices stored as payloads
 - **Two-stage retrieval** — Dense vector search followed by optional ColBERT v2 reranking for higher precision
+- **HTML output** — Query results saved to `testset/` as HTML files named after the first three words of the query (e.g. `"load balancing innovations.html"`). If a file with that name already exists, a numeric suffix is appended (`[1]`, `[2]`, …).
 - **Local & Cloud** — Works with local Qdrant instances; can be extended to use Qdrant Cloud
 
 ## Further work

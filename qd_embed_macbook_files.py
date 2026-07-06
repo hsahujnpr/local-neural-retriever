@@ -104,12 +104,15 @@ def embed_and_populate():
                 print(f"No valid chunks found for {filename}, skipping upsert.")
                 continue
 
-            #Insert into the DB
-            client.upsert(
-                collection_name=collection_name,
-                points=points
-            )   
-            print(f"Inserted {len(points)} points from {filename} into collection"+ collection_name)
+            #Insert into the DB in batches of 100 points
+            batch_size = 100
+            for i in range(0, len(points), batch_size):
+                batch_points = points[i:i+batch_size]
+                client.upsert(
+                    collection_name=collection_name,
+                    points=batch_points
+                )
+                print(f"Inserted {len(batch_points)} points from {filename} into collection"+ collection_name)
             print("====")
 
         except FileNotFoundError:
